@@ -1,7 +1,7 @@
 {
   "name": "Main Direct",
   "short_name": "Main Direct",
-  "description": "B2B contact data and email deliverability infrastructure.",
+  "description": "B2B outreach supply engine.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

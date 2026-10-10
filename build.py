@@ -6,7 +6,7 @@ ROOT=Path(__file__).parent
 BASE="https://main.direct"
 ORG="https://main.direct/#organization"
 SITE="https://main.direct/#website"
-DESC="Main Direct builds B2B contact data, validation and email deliverability infrastructure for high-signal outreach."
+DESC="Main Direct is a B2B outreach supply engine: audience filters, verified contact supply, liveness controls, dedicated deliverability infrastructure and first-touch routing."
 UPDATED="2026-10-10"
 
 def ld(obj): return json.dumps(obj,ensure_ascii=False,separators=(",",":"))
@@ -15,10 +15,11 @@ def organization():
     return {
       "@type":"Organization","@id":ORG,"name":"Main Direct","alternateName":["main.direct"],
       "url":BASE+"/","logo":{"@type":"ImageObject","@id":BASE+"/#logo","url":BASE+"/assets/img/icon-512.png","contentUrl":BASE+"/assets/img/icon-512.png","width":512,"height":512,"caption":"Main Direct"},
-      "image":[{"@type":"ImageObject","@id":BASE+"/#ogimage","url":BASE+"/og.png","contentUrl":BASE+"/og.png","width":1200,"height":630,"caption":"Main Direct — B2B contact data and email deliverability infrastructure"}],
+      "image":[{"@type":"ImageObject","@id":BASE+"/#ogimage","url":BASE+"/og.png","contentUrl":BASE+"/og.png","width":1200,"height":630,"caption":"Main Direct — B2B outreach supply engine"}],
       "description":DESC,
       "founder":{"@type":"Person","@id":BASE+"/#costa-d","name":"Costa D","givenName":"Konstantin","jobTitle":"Founder","url":"https://www.linkedin.com/in/xcota/"},
       "areaServed":{"@type":"Place","name":"Worldwide"},"knowsLanguage":["en","ru"],
+      "knowsAbout":["B2B outreach supply infrastructure","contact discovery","contact validation","contact liveness","email deliverability","dedicated sending domains","cold-email warm-up","suppression handling"],
       "sameAs":["https://github.com/xcota/main-direct-site","https://www.linkedin.com/in/xcota/"]
     }
 
@@ -45,6 +46,8 @@ def head(*,title,description,path,robots="index,follow,max-snippet:-1,max-image-
   <link rel="manifest" href="/site.webmanifest">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="alternate" type="application/rss+xml" title="Main Direct playbooks" href="/rss.xml">
+  <link rel="alternate" type="text/plain" title="LLM-readable facts" href="/llms.txt">
+  <link rel="alternate" type="text/markdown" title="AI agent summary" href="/ai/summary.md">
   <link rel="stylesheet" href="/assets/site.css">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Main Direct">
@@ -65,9 +68,9 @@ def head(*,title,description,path,robots="index,follow,max-snippet:-1,max-image-
   <meta name="twitter:image:alt" content="Main Direct: B2B contact data and email deliverability infrastructure.">'''
 
 def shell(*,title,description,path,body,page_schema,robots="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1",nav="home"):
-    aria={"home":"Home","services":"Services","playbook":"Playbook","about":"About","contact":"Contact"}
-    urls={"home":"/","services":"/services/","playbook":"/playbooks/contact-to-inbox/","about":"/about/","contact":"/contact/"}
-    navhtml="".join(f'<li><a href="{urls[p]}"{" aria-current=\"page\"" if p==nav else ""}>{aria[p]}</a></li>' for p in ["home","services","playbook","about","contact"])
+    aria={"home":"Home","services":"Modules","signal":"Signal Atlas","supply":"Contact Supply","engine":"Deliverability","playbook":"Playbook","contact":"Contact"}
+    urls={"home":"/","services":"/services/","signal":"/signal-atlas/","supply":"/contact-supply/","engine":"/deliverability-engine/","playbook":"/playbooks/contact-to-inbox/","contact":"/contact/"}
+    navhtml="".join(f'<li><a href="{urls[p]}"{" aria-current=\"page\"" if p==nav else ""}>{aria[p]}</a></li>' for p in ["home","services","signal","supply","engine","playbook","contact"])
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -98,9 +101,9 @@ def shell(*,title,description,path,body,page_schema,robots="index,follow,max-sni
   <footer class="site">
     <div class="wrap">
       <div class="footer-grid">
-        <div><a class="logo" href="/">main<strong>.</strong>direct</a><p style="margin-top:16px">B2B contact data, validation and email deliverability infrastructure.</p></div>
-        <nav aria-label="Site"><h2>Site</h2><ul><li><a href="/">Home</a></li><li><a href="/services/">Services</a></li><li><a href="/playbooks/contact-to-inbox/">Playbook</a></li><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li></ul></nav>
-        <nav aria-label="Technical"><h2>Technical</h2><ul><li><a href="/sitemap.xml">Sitemap</a></li><li><a href="/rss.xml">RSS</a></li><li><a href="/llms.txt">llms.txt</a></li><li><a href="/robots.txt">Robots</a></li></ul></nav>
+        <div><a class="logo" href="/">main<strong>.</strong>direct</a><p style="margin-top:16px">B2B outreach supply engine: filters, verified contact supply and deliverability infrastructure.</p></div>
+        <nav aria-label="Site"><h2>Site</h2><ul><li><a href="/">Home</a></li><li><a href="/services/">Modules</a></li><li><a href="/signal-atlas/">Signal Atlas</a></li><li><a href="/contact-supply/">Contact Supply</a></li><li><a href="/deliverability-engine/">Deliverability Engine</a></li><li><a href="/playbooks/self-supply/">Self-supply playbook</a></li><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li></ul></nav>
+        <nav aria-label="Technical"><h2>Technical</h2><ul><li><a href="/sitemap.xml">Sitemap</a></li><li><a href="/rss.xml">RSS</a></li><li><a href="/llms.txt">llms.txt</a></li><li><a href="/ai/">AI guide</a></li><li><a href="/ai/summary.md">AI summary</a></li><li><a href="/robots.txt">Robots</a></li></ul></nav>
         <div><h2>Contact</h2><p><a href="/contact/">Infrastructure review form</a></p><p>Remote · Worldwide<br>English · Russian</p></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Main Direct</span><span>Built without trackers or cookies</span><a href="/privacy/">Privacy</a></div>
@@ -111,19 +114,19 @@ def shell(*,title,description,path,body,page_schema,robots="index,follow,max-sni
 
 home_body=f'''  <section class="hero" aria-labelledby="home-title">
     <div class="wrap">
-      <p class="eyebrow">Data supply &amp; deliverability engine</p>
-      <h1 id="home-title">Contact infrastructure for outreach that survives <span class="accent">the first touch</span>.</h1>
-      <p class="lead">Main Direct builds the supply layer behind B2B outreach: verified contact data, clean routing, dedicated sending domains and controls that protect sender reputation.</p>
+      <p class="eyebrow">B2B outreach supply engine</p>
+      <h1 id="home-title">The supply layer behind <span class="accent">relevant B2B outreach</span>.</h1>
+      <p class="lead">Main Direct turns a market description into supply infrastructure: filters, verified contact routes, liveness controls, dedicated sending domains and a first-touch layer your team can audit.</p>
       <div class="hero-actions"><a class="button" href="/contact/">Request infrastructure review</a><a class="button ghost" href="/playbooks/contact-to-inbox/">Read the system</a><p class="hero-note">No trackers. No purchased lists. No cold sending from a brand domain.</p></div>
     </div>
   </section>
   <section aria-labelledby="services-title">
     <div class="wrap">
-      <div class="section-head"><p class="eyebrow">Capabilities</p><h2 id="services-title">Four coupled layers, one delivery system</h2><p>Outreach breaks in different places. A weak list wastes research; a bad domain burns messages; an unfocused first touch burns attention. Main Direct builds the system end to end.</p></div>
+      <div class="section-head"><p class="eyebrow">Product modules</p><h2 id="services-title">Three supply modules, one control layer</h2><p>Outreach breaks in different places. A weak list wastes research; a bad domain burns messages; an unfocused first touch burns attention. Main Direct builds the system end to end.</p></div>
       <div class="grid">
-        <article class="card"><span class="tag">Layer 1</span><h3>Contact data engineering</h3><p>Segment sourcing, company mapping, role discovery, normalization, deduplication and a CRM-ready schema with source and freshness fields.</p></article>
-        <article class="card"><span class="tag">Layer 2</span><h3>Identity &amp; validation</h3><p>Company-domain resolution, mailbox-pattern testing, permutation checks, role fit and independent identity signals before a contact enters a campaign.</p></article>
-        <article class="card"><span class="tag">Layer 3</span><h3>Deliverability infrastructure</h3><p>Dedicated sending domains, SPF/DKIM/DMARC architecture, MTA setup, reputation controls, ramp plans, suppression logic and placement monitoring.</p></article>
+        <article class="card"><span class="tag">Module 1</span><h3><a href="/signal-atlas/">Signal Atlas</a></h3><p>Market description becomes audience filters, evidence requirements, disqualifiers and first-touch angles. Planning first; contacts second.</p></article>
+        <article class="card"><span class="tag">Module 2</span><h3><a href="/contact-supply/">Contact Supply</a></h3><p>Company-domain resolution, mailbox-pattern testing, independent identity checks, normalization, provenance and a CRM-ready schema.</p></article>
+        <article class="card"><span class="tag">Module 3</span><h3><a href="/deliverability-engine/">Deliverability Engine</a></h3><p>Dedicated sending domains, SPF/DKIM/DMARC architecture, warm-up gates, pacing, reputation controls, suppression logic and reply routing.</p></article>
         <article class="card"><span class="tag">Layer 4</span><h3>First-touch systems</h3><p>Signal capture, qualification filters, message architecture and routing so the first touch is relevant, small and testable.</p></article>
         <article class="card"><span class="tag">Control</span><h3>Observability</h3><p>Per-domain volume, authentication, bounce classes, complaints, seed placement, replies and suppression status in one operational view.</p></article>
         <article class="card"><span class="tag">Boundary</span><h3>Not a list broker</h3><p>Main Direct does not sell scraped exports or promise inbox placement. It builds systems where the filter, evidence and infrastructure are visible.</p></article>
@@ -155,12 +158,18 @@ home_body=f'''  <section class="hero" aria-labelledby="home-title">
   </section>'''
 
 services_body=f'''  <section class="page-hero"><div class="wrap">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Services</nav>
-    <h1>B2B contact data, validation &amp; deliverability services</h1>
-    <p class="lead">Main Direct builds outreach supply systems for technical founders, revenue teams and partnerships. Engagements can cover one layer or the full contact-to-inbox path.</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Modules</nav>
+    <h1>Outreach supply modules</h1>
+    <p class="lead">Four coupled layers turn a market description into a controlled, auditable route to professional B2B contacts and controlled sending.</p>
+    <div class="grid" style="margin-top:32px">
+      <article class="card"><span class="tag">Module 1</span><h3><a href="/signal-atlas/">Signal Atlas</a></h3><p>Audience definitions, buying triggers, evidence rules and targeting filters.</p></article>
+      <article class="card"><span class="tag">Module 2</span><h3><a href="/contact-supply/">Contact Supply</a></h3><p>Discovery, validation, provenance, normalization and suppression-aware export readiness.</p></article>
+      <article class="card"><span class="tag">Module 3</span><h3><a href="/deliverability-engine/">Deliverability Engine</a></h3><p>Dedicated domains, authentication, warm-up, pacing and reply routing.</p></article>
+      <article class="card"><span class="tag">Module 4</span><h3><a href="/playbooks/contact-to-inbox/">First-touch routing</a></h3><p>Qualification, message architecture, reply routing and campaign learning.</p></article>
+    </div>
   </div></section>
   <section aria-labelledby="svc-data"><div class="wrap reading">
-    <h2 id="svc-data">Contact data engineering</h2><p class="section-intro">Build a source-of-truth pipeline instead of forwarding spreadsheets.</p>
+    <h2 id="svc-data">Signal and audience engineering</h2><p class="section-intro">Build a source-of-truth pipeline instead of forwarding spreadsheets.</p>
     <div class="grid" style="margin-top:32px">
       <article class="card"><span class="tag">Input</span><h3>Source mapping</h3><p>Identify public registries, filings, funding records, event data, technical artifacts and owned data that can produce relevant companies and roles.</p></article>
       <article class="card"><span class="tag">Structure</span><h3>Canonical schema</h3><p>Normalize person, organization, domain, role, geography, source, confidence and freshness fields before enrichment begins.</p></article>
@@ -238,10 +247,10 @@ Next step: If useful, I can send a one-pager.</code></pre>
     <p>Main Direct builds this layer as infrastructure: data engineering, validation controls, sending-domain architecture and operational visibility. It does not sell exports or claim guaranteed inbox placement.</p>
   </article>'''
 
-about_body=f'''  <section class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / About</nav><h1>The engineering side of B2B outreach</h1><p class="lead">Main Direct is an independent infrastructure practice for contact data, validation and email deliverability. It is not a list broker or a volume-only agency.</p></div></section>
+about_body=f'''  <section class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / About</nav><h1>The supply side of B2B outreach</h1><p class="lead">Main Direct is an independent B2B outreach supply engine for audience filters, contact validation, liveness and deliverability infrastructure. It is not a list broker or volume-only agency.</p></div></section>
   <section><div class="wrap split">
     <div><p class="eyebrow">About</p><h2>Built around one constraint</h2><p class="lead">Most outreach systems do not fail because someone wrote a bad sentence. They fail because the contact was irrelevant, stale, unreachable or sent through infrastructure that could not carry it.</p></div>
-    <div class="facts"><div class="fact"><span class="k">Name</span><strong>Main Direct</strong></div><div class="fact"><span class="k">Founder</span><strong>Costa D</strong></div><div class="fact"><span class="k">Focus</span><strong>Contact data · validation · deliverability</strong></div><div class="fact"><span class="k">Format</span><strong>Infrastructure projects</strong></div><div class="fact"><span class="k">Coverage</span><strong>Remote · worldwide</strong></div><div class="fact"><span class="k">Languages</span><strong>English · Russian</strong></div></div>
+    <div class="facts"><div class="fact"><span class="k">Name</span><strong>Main Direct</strong></div><div class="fact"><span class="k">Founder</span><strong>Costa D</strong></div><div class="fact"><span class="k">Focus</span><strong>Filters · validated contact supply · deliverability</strong></div><div class="fact"><span class="k">Format</span><strong>Supply infrastructure</strong></div><div class="fact"><span class="k">Coverage</span><strong>Remote · worldwide</strong></div><div class="fact"><span class="k">Languages</span><strong>English · Russian</strong></div></div>
   </div></section>
   <section aria-labelledby="method"><div class="wrap reading"><h2 id="method">How engagements work</h2>
     <div class="process"><div class="step"><span class="n">01</span><h3>Diagnose</h3><p>Separate targeting, data, validation, infrastructure and message constraints.</p></div><div class="step"><span class="n">02</span><h3>Design</h3><p>Define schemas, exit conditions, sending identities, guardrails and stop rules.</p></div><div class="step"><span class="n">03</span><h3>Build</h3><p>Implement the pipeline, authentication and observability locally or in your stack.</p></div><div class="step"><span class="n">04</span><h3>Operate</h3><p>Review signals, adjust filters and expand only when quality holds.</p></div></div>
@@ -268,11 +277,11 @@ faq_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/faq/#we
 faq_html="".join(f'<div class="faq-item"><h3 id="q{i}">{q}</h3><p>{a}</p></div>' for i,(q,a) in enumerate(faq_items,1))
 faq_body=f'''  <section class="page-hero"><div class="wrap reading"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / FAQ</nav><h1>B2B contact data &amp; deliverability FAQ</h1><p class="lead">Direct answers on validation, sending infrastructure and how Main Direct works.</p></div></section><section><div class="wrap"><div class="faq">{faq_html}</div></div></section>'''
 
-services_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/services/#webpage","B2B contact data, validation & deliverability services"),*[{"@type":"Service","@id":BASE+f"/services/#{sid}","name":name,"serviceType":stype,"description":desc,"provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"},"audience":{"@type":"BusinessAudience","audienceType":"B2B revenue, partnerships and fundraising teams"}} for sid,name,stype,desc in [
-("contact-data-engineering","Contact data engineering","B2B contact data pipeline","Source mapping, canonical schema, normalization, deduplication and CRM-ready exports."),
-("contact-validation","Contact validation & enrichment","B2B contact validation","Company-domain resolution, mailbox pattern testing, role fit and independent identity checks."),
-("deliverability-infrastructure","Email deliverability infrastructure","Email deliverability","Sending-domain isolation, SPF/DKIM/DMARC, MTA setup, warm-up, reputation and placement monitoring."),
-("first-touch-systems","First-touch architecture","B2B outreach systems","Signal capture, qualification filters, first-touch message architecture and reply routing.")]]]}
+services_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/services/#webpage","Main Direct supply modules"),*[{"@type":"Service","@id":BASE+f"/services/#{sid}","name":name,"serviceType":stype,"description":desc,"provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"},"audience":{"@type":"BusinessAudience","audienceType":"B2B founders, revenue teams and professional outreach teams"}} for sid,name,stype,desc in [
+("signal-atlas","Signal Atlas","B2B audience research and outreach filters","Market description, buying triggers, evidence rules, disqualifiers and targeting filters."),
+("contact-supply","Verified Contact Supply","B2B contact discovery and validation","Company resolution, mailbox validation, identity checks, normalization, provenance and suppression handling."),
+("deliverability-engine","Deliverability Engine","Email deliverability infrastructure","Dedicated sending domains, SPF/DKIM/DMARC, warm-up gates, pacing, monitoring and reply routing."),
+("first-touch-routing","First-touch routing","B2B outreach systems","Qualification filters, first-touch architecture, reply routing and suppression-aware follow-up.")]]]}
 
 about_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/about/#webpage","About Main Direct"),{"@type":"AboutPage","@id":BASE+"/about/#aboutpage","url":BASE+"/about/","name":"About Main Direct","mainEntity":{"@id":ORG}}]}
 
@@ -305,7 +314,7 @@ contact_body=f'''  <section class="page-hero"><div class="wrap reading"><nav cla
     </form>
   </div></section>'''
 
-privacy_body=f'''  <section class="page-hero"><div class="wrap reading"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Privacy</nav><h1>Privacy</h1><p class="lead">This site has no analytics, cookies, forms or cross-site tracking.</p></div></section>
+privacy_body=f'''  <section class="page-hero"><div class="wrap reading"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Privacy</nav><h1>Privacy</h1><p class="lead">This site has no analytics, advertising cookies or cross-site tracking. The contact form uses a delivery processor to route submissions.</p></div></section>
   <section><div class="wrap reading"><div class="article-content">
     <h2>What we collect</h2><p>The contact form collects only the details you submit: name, work email, company or project, website, target segment, geography, current data, sending setup and your stated constraint. We use them to assess the request and reply.</p>
     <h2>Delivery processing</h2><p>Static hosting cannot receive form posts directly. Submissions are routed through a form-delivery processor to Main Direct’s private mailbox. The processor acts as a delivery intermediary for this request and is not used to profile you or add you to a mailing list.</p>
@@ -320,15 +329,212 @@ page404_body=f'''  <section class="page-hero"><div class="wrap reading"><p class
 thanks_body=f'''  <section class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Contact / Thank you</nav></div></section>
   <section><div class="wrap"><div class="card thanks-panel"><p class="eyebrow">Request received</p><h1>Thanks. Next step is simple.</h1><p class="lead">I’ll review the segment, current route and constraint, then reply with the first diagnostic or a request for missing context.</p><div class="hero-actions" style="justify-content:center"><a class="button" href="/playbooks/contact-to-inbox/">Read the system</a><a class="button ghost" href="/">Back home</a></div></div></div></section>'''
 
+signal_atlas_body=r'''  <section class="page-hero"><div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Signal Atlas</nav>
+    <p class="eyebrow">Module 1</p>
+    <h1>Signal Atlas</h1>
+    <p class="lead">A market description becomes a researched audience map: who can say yes, why now, what evidence is required, and which filters decide whether a contact enters the supply queue.</p>
+    <div class="hero-actions"><a class="button" href="/contact/">Start infrastructure review</a><a class="button ghost" href="/playbooks/self-supply/">See the self-supply playbook</a></div>
+  </div></section>
+  <section aria-labelledby="atlas-io"><div class="wrap reading">
+    <h2 id="atlas-io">Input and output</h2>
+    <p class="section-intro">Signal Atlas is a planning product. It produces the decision layer before contact retrieval begins.</p>
+    <div class="grid" style="margin-top:32px">
+      <article class="card"><span class="tag">Input</span><h3>What you provide</h3><p>Product or offer, target market, geography, stage, current customers, disqualifiers and any existing outreach attempt.</p></article>
+      <article class="card"><span class="tag">Output</span><h3>What you receive</h3><p>Audience definitions, buying triggers, role hypotheses, evidence rules, exclusion rules, targeting filters and first-touch architecture.</p></article>
+    </div>
+  </div></section>
+  <section aria-labelledby="atlas-process"><div class="wrap">
+    <h2 id="atlas-process">How an audience is built</h2>
+    <div class="process">
+      <div class="step"><span class="n">01</span><h3>Define the exchange</h3><p>State what changes for the recipient and why the timing matters.</p></div>
+      <div class="step"><span class="n">02</span><h3>Map companies</h3><p>Identify company categories, operating constraints, technical stack and regulatory context.</p></div>
+      <div class="step"><span class="n">03</span><h3>Map roles</h3><p>Separate economic buyer, technical approver, operational owner and blocker.</p></div>
+      <div class="step"><span class="n">04</span><h3>Set evidence</h3><p>Require a recent public trigger, mandate match, stack match or operational bottleneck.</p></div>
+    </div>
+  </div></section>
+  <section aria-labelledby="atlas-boundary"><div class="wrap reading">
+    <h2 id="atlas-boundary">Boundary</h2>
+    <p>Signal Atlas is not a scraped contact pack. It defines who should be researched and why. Contact retrieval and validation happen in the next layer.</p>
+  </div></section>'''
+
+contact_supply_body=r'''  <section class="page-hero"><div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Contact Supply</nav>
+    <p class="eyebrow">Module 2</p>
+    <h1>Verified Contact Supply</h1>
+    <p class="lead">A controlled route from audience filters to normalized business contacts, with provenance, validation status, liveness checks and suppression handling.</p>
+    <div class="hero-actions"><a class="button" href="/contact/">Request a scope review</a><a class="button ghost" href="/signal-atlas/">Start with Signal Atlas</a></div>
+  </div></section>
+  <section aria-labelledby="supply-flow"><div class="wrap">
+    <h2 id="supply-flow">Supply flow</h2>
+    <div class="system" style="margin-top:32px">
+      <div class="stage"><strong>Filter</strong><span>Apply the approved market, role, geography and exclusion rules.</span></div>
+      <div class="stage"><strong>Resolve</strong><span>Resolve companies to operating domains and roles to relevant owners.</span></div>
+      <div class="stage"><strong>Validate</strong><span>Check mailbox route, role fit, identity consistency and duplicate status.</span></div>
+      <div class="stage"><strong>Package</strong><span>Normalize fields, preserve provenance and prepare an audit-ready export.</span></div>
+      <div class="stage"><strong>Suppress</strong><span>Remove opt-outs, complaints, prior exclusions and unsafe targets.</span></div>
+    </div>
+  </div></section>
+  <section aria-labelledby="supply-fields"><div class="wrap reading">
+    <h2 id="supply-fields">Minimum export schema</h2>
+    <div class="artifact" style="margin-top:28px">
+      <table><thead><tr><th>Field</th><th>Purpose</th></tr></thead><tbody>
+        <tr><td><code>contact_id</code></td><td>Stable identifier for deduplication and audit.</td></tr>
+        <tr><td><code>full_name</code></td><td>Recipient name used for professional addressing.</td></tr>
+        <tr><td><code>role</code></td><td>Current or last observed professional role.</td></tr>
+        <tr><td><code>company</code></td><td>Operating company, not an unrelated legacy domain.</td></tr>
+        <tr><td><code>domain</code></td><td>Resolved business domain and routing basis.</td></tr>
+        <tr><td><code>email_status</code></td><td>Validation result and date, not a permanent guarantee.</td></tr>
+        <tr><td><code>evidence_url</code></td><td>Public trigger or fit evidence used by the filter.</td></tr>
+        <tr><td><code>confidence</code></td><td>Simple explanation of supporting and missing checks.</td></tr>
+        <tr><td><code>suppression</code></td><td>Opt-out, complaint, bounce or exclusion state.</td></tr>
+      </tbody></table>
+    </div>
+  </div></section>
+  <section aria-labelledby="supply-rules"><div class="wrap reading">
+    <h2 id="supply-rules">Settlement and caveats</h2>
+    <div class="grid" style="margin-top:32px">
+      <article class="card"><span class="tag">Paid rule</span><h3>No raw-list resale</h3><p>Scope is based on approved filters and completed work, not a fake claim to an exclusive hidden database.</p></article>
+      <article class="card"><span class="tag">Quality</span><h3>Verified is time-bound</h3><p>Verification describes the check at delivery. Roles, mailboxes and companies can still change later.</p></article>
+      <article class="card"><span class="tag">Deduplication</span><h3>Unique routes only</h3><p>The same person or mailbox is not repackaged as a new contact.</p></article>
+      <article class="card"><span class="tag">Boundary</span><h3>Lawful use</h3><p>Delivery is for professional B2B use. The buyer remains responsible for lawful use and notices.</p></article>
+    </div>
+  </div></section>'''
+
+engine_body=r'''  <section class="page-hero"><div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Deliverability Engine</nav>
+    <p class="eyebrow">Module 3</p>
+    <h1>Deliverability Engine</h1>
+    <p class="lead">Dedicated sending infrastructure, isolated from your primary domain, with authentication, warm-up gates, pacing, suppression and reply routing.</p>
+    <div class="hero-actions"><a class="button" href="/contact/">Request infrastructure review</a><a class="button ghost" href="/playbooks/contact-to-inbox/">Read the architecture</a></div>
+  </div></section>
+  <section aria-labelledby="engine-layers"><div class="wrap">
+    <h2 id="engine-layers">Infrastructure layers</h2>
+    <div class="grid" style="margin-top:32px">
+      <article class="card"><span class="tag">Identity</span><h3>Dedicated domains</h3><p>Cold sending uses separate domains or isolated subdomains. The brand domain is not the experimental range.</p></article>
+      <article class="card"><span class="tag">Authentication</span><h3>SPF, DKIM, DMARC</h3><p>DNS records are scoped deliberately, with alignment and failure handling reviewed before launch.</p></article>
+      <article class="card"><span class="tag">Warm-up</span><h3>Staged ramp</h3><p>Mailboxes start with low, consistent volume. Expansion requires stable bounce, complaint and engagement signals.</p></article>
+      <article class="card"><span class="tag">Guardrails</span><h3>Launch gates</h3><p>DNS, mailbox health, audience availability, suppression, content policy and pacing must pass before live sends.</p></article>
+    </div>
+  </div></section>
+  <section aria-labelledby="engine-calculator"><div class="wrap reading">
+    <h2 id="engine-calculator">Capacity planning calculator</h2>
+    <p class="section-intro">This is a planning calculator, not a deliverability or reply forecast.</p>
+    <div class="calc">
+      <form class="calc-inputs" onsubmit="return false">
+        <label>Inboxes<input id="calc-inboxes" type="number" min="1" step="1" value="8"></label>
+        <label>First-touch emails per inbox / sending day<input id="calc-cap" type="number" min="1" step="1" value="15"></label>
+        <label>Warm-up days<input id="calc-warmup" type="number" min="0" step="1" value="21"></label>
+        <label>Sending days / month<input id="calc-days" type="number" min="1" max="31" step="1" value="30"></label>
+      </form>
+      <div class="calc-output" aria-live="polite">
+        <div class="metric"><strong id="calc-launch">Day 22</strong><span>Earliest controlled launch day after warm-up</span></div>
+        <div class="metric"><strong id="calc-daily">120</strong><span>First-touch emails / sending day at full capacity</span></div>
+        <div class="metric"><strong id="calc-monthly">3,600</strong><span>First-touch emails / month at full capacity</span></div>
+        <p class="calc-note">Assumes stable mailbox health and launch gates passing. It does not predict inbox placement, replies, meetings or revenue.</p>
+      </div>
+    </div>
+  </div></section>
+  <script>
+    (function(){
+      const i=document.getElementById('calc-inboxes'),c=document.getElementById('calc-cap'),w=document.getElementById('calc-warmup'),d=document.getElementById('calc-days'),l=document.getElementById('calc-launch'),daily=document.getElementById('calc-daily'),monthly=document.getElementById('calc-monthly');
+      function n(el,def){const v=Number(el.value);return Number.isFinite(v)&&v>=0?v:def}
+      function update(){
+        const inboxes=Math.max(1,Math.floor(n(i,8))),cap=Math.max(1,Math.floor(n(c,15))),warm=Math.max(0,Math.floor(n(w,21))),days=Math.min(31,Math.max(1,Math.floor(n(d,30))));
+        const ddaily=inboxes*cap;
+        l.textContent='Day '+(warm+1);daily.textContent=ddaily.toLocaleString('en-US');monthly.textContent=(ddaily*days).toLocaleString('en-US');
+      }
+      [i,c,w,d].forEach(el=>el.addEventListener('input',update));update();
+    })();
+  </script>
+  <section aria-labelledby="engine-boundary"><div class="wrap reading">
+    <h2 id="engine-boundary">What we do not promise</h2>
+    <p>Main Direct does not guarantee inbox placement, replies, meetings, revenue, provider approval or permanent sender reputation. The engine is designed to make failure visible and prevent avoidable reputation damage.</p>
+  </div></section>'''
+
+selfplay_body=r'''  <article class="page-hero article"><div class="wrap reading">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Playbooks / Self-supply</nav>
+    <p class="eyebrow">Public methodology · updated 10 Oct 2026</p>
+    <h1>Main Direct self-supply playbook</h1>
+    <div class="byline"><span>Main Direct</span><span>B2B outreach supply engine</span><span>No private contact data exposed</span></div>
+  </div></article>
+  <article class="wrap reading article-content">
+    <p><strong>Short answer:</strong> this playbook shows how Main Direct applies its own supply layer to itself. It is a methodology artifact, not a campaign log, customer case study or promise of replies.</p>
+    <div class="callout"><p>Rule: a supply system is credible only if it can describe the route from market signal to validated contact without hiding the quality gates.</p></div>
+    <h2>1. Target definition</h2>
+    <p>Main Direct is useful to teams that already have a market but suffer after the send decision: stale lists, ambiguous titles, weak domain resolution, missing liveness checks, unsafe primary-domain sending or unstructured replies.</p>
+    <ul><li><strong>Primary audience:</strong> technical founders and revenue leaders running professional B2B outreach.</li><li><strong>Secondary audience:</strong> fundraising teams that need investor-relevant filters rather than generic investor lists.</li><li><strong>Disqualifiers:</strong> consumer marketing, sensitive targeting, unlawful campaigns, purchased-list refresh requests, guaranteed-meeting requests.</li></ul>
+    <h2>2. Signal queues</h2>
+    <p>A contact enters research only when at least one current, public signal can be stated.</p>
+    <ol><li>Fund or buyer publicly shifts thesis, stack or geography.</li><li>A company launches, migrates, audits or expands into a new market.</li><li>A competitor raises, is acquired or leaves a category gap.</li><li>A hiring signal exposes a scaling or infrastructure bottleneck.</li><li>A public post describes an outreach, deliverability or data-quality problem.</li></ol>
+    <h2>3. Audience filters</h2>
+    <p>Each audience is stored as a filter set, not as a paragraph of intentions.</p>
+    <div class="artifact">
+      <table><thead><tr><th>Layer</th><th>Example filter</th><th>Failure mode prevented</th></tr></thead><tbody>
+        <tr><td>Company category</td><td>B2B software or technical service company</td><td>Consumer or irrelevant outreach</td></tr>
+        <tr><td>Role family</td><td>Founder, GTM lead, RevOps, infrastructure lead</td><td>Titles without decision context</td></tr>
+        <tr><td>Geography</td><td>Approved market only</td><td>Jurisdictions outside campaign scope</td></tr>
+        <tr><td>Signal</td><td>Recent launch, hiring, migration or public thesis</td><td>Undated generic interest</td></tr>
+        <tr><td>Disqualifier</td><td>Guaranteed-result expectation, consumer list, unlawful use</td><td>Misaligned buyer</td></tr>
+      </tbody></table>
+    </div>
+    <h2>4. Domain and contact resolution</h2>
+    <p>The company name is resolved to an operating domain before person-level enrichment. This prevents a person from being attached to an unrelated subsidiary, legacy domain or lookalike company.</p>
+    <h2>5. Validation gates</h2>
+    <ol><li>Mailbox route check.</li><li>Role and employer consistency.</li><li>Independent profile or public-source cross-check.</li><li>Duplicate and suppression review.</li><li>Freshness timestamp.</li><li>Final supply/readiness decision.</li></ol>
+    <h2>6. First-touch architecture</h2>
+    <p>The first 80 words must answer why now, what changes, what is true today, why this recipient and what the low-friction next step is. The message is a diagnostic, not a volume test.</p>
+    <h2>7. Operating output</h2>
+    <p>The working output is not only a CSV. It is the route by which a row earned access to a campaign.</p>
+    <ul><li>Audience definitions and disqualifiers.</li><li>Filter set used for retrieval.</li><li>Validation and freshness state.</li><li>Public evidence link.</li><li>Suppression state.</li><li>Next action and owner.</li></ul>
+    <h2>8. Boundary</h2>
+    <p>This page does not expose private research, client data or a real contact export. It also does not promise replies, meetings, revenue, inbox placement or legal compliance.</p>
+  </article>'''
+
+ai_body=r'''  <section class="page-hero"><div class="wrap reading">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / AI guide</nav>
+    <p class="eyebrow">Agent guide</p>
+    <h1>Main Direct for AI assistants</h1>
+    <p class="lead">Factual context for research assistants, browser agents and answer engines. Cite only public pages and preserve the caveats.</p>
+  </div></section>
+  <section><div class="wrap reading"><div class="article-content">
+    <h2>Short description</h2>
+    <p>Main Direct is a B2B outreach supply engine. It turns a market description into audience filters, verified contact routes, liveness controls, dedicated deliverability infrastructure, first-touch routing and suppression systems.</p>
+    <h2>Public modules</h2>
+    <ul><li><a href="/signal-atlas/">Signal Atlas</a>: audience research, evidence rules and targeting filters.</li><li><a href="/contact-supply/">Contact Supply</a>: discovery, validation, provenance, normalization and export readiness.</li><li><a href="/deliverability-engine/">Deliverability Engine</a>: dedicated domains, authentication, warm-up, pacing and reply routing.</li><li><a href="/playbooks/self-supply/">Self-supply playbook</a>: public methodology artifact.</li></ul>
+    <h2>Best fit</h2>
+    <p>Professional B2B teams that need an auditable supply route rather than a raw list or volume-only sending tool.</p>
+    <h2>Not a fit</h2>
+    <p>Consumer marketing, spam, deceptive identity, sensitive targeting, unlawful campaigns or buyers demanding guaranteed meetings, replies, revenue or inbox placement.</p>
+    <h2>Required caveats</h2>
+    <p>Verification is time-bound. Dedicated infrastructure reduces avoidable reputation damage but does not guarantee inbox placement or replies. The buyer remains responsible for lawful use.</p>
+    <h2>Citation targets</h2>
+    <ul><li><a href="/">https://main.direct/</a> — canonical product page.</li><li><a href="/services/">https://main.direct/services/</a> — module overview.</li><li><a href="/playbooks/self-supply/">https://main.direct/playbooks/self-supply/</a> — public methodology.</li><li><a href="/llms.txt">https://main.direct/llms.txt</a> — machine-readable fact sheet.</li></ul>
+    <h2>Do not claim</h2>
+    <ul><li>Guaranteed replies, meetings, revenue or inbox placement.</li><li>An exclusive private contact database.</li><li>Client counts, revenue or funding.</li><li>Legal compliance for a buyer campaign.</li></ul>
+  </div></div></section>'''
+
+signal_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/signal-atlas/#webpage","Signal Atlas"),{"@type":"Service","@id":BASE+"/signal-atlas/#service","name":"Signal Atlas","serviceType":"B2B audience research and outreach filters","description":"Market description becomes audience definitions, buying triggers, evidence rules, exclusion rules and targeting filters.","provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"}}]}
+supply_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/contact-supply/#webpage","Verified Contact Supply"),{"@type":"Service","@id":BASE+"/contact-supply/#service","name":"Verified Contact Supply","serviceType":"B2B contact discovery and validation","description":"Controlled contact retrieval, company-domain resolution, validation, provenance, normalization, deduplication and suppression handling.","provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"}}]}
+engine_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/deliverability-engine/#webpage","Deliverability Engine"),{"@type":"Service","@id":BASE+"/deliverability-engine/#service","name":"Deliverability Engine","serviceType":"Email deliverability infrastructure","description":"Dedicated sending domains, SPF/DKIM/DMARC architecture, warm-up gates, pacing, suppression and reply routing.","provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"}}]}
+self_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/playbooks/self-supply/#webpage","Main Direct self-supply playbook"),{"@type":"Article","@id":BASE+"/playbooks/self-supply/#article","headline":"Main Direct self-supply playbook","description":"Public methodology for applying Main Direct's contact supply, validation and deliverability layer to itself.","datePublished":"2026-10-10","dateModified":UPDATED,"author":{"@id":BASE+"/#costa-d"},"publisher":{"@id":ORG},"image":{"@id":BASE+"/#ogimage"},"mainEntityOfPage":{"@id":BASE+"/playbooks/self-supply/#webpage"}}]}
+ai_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/ai/#webpage","Main Direct AI agent guide"),{"@type":"WebPage","@id":BASE+"/ai/#guide","name":"Main Direct AI agent guide","description":"Public factual guide for AI assistants, research agents and answer engines.","inLanguage":"en"}]}
+
+
 pages=[
- dict(path="/index.html",title="Main Direct | B2B Contact Data & Email Infrastructure",description="B2B contact data, validation and email deliverability infrastructure for high-signal outreach. Built as an auditable system, not a rented list.",body=home_body,schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/#webpage","Main Direct"),*[{"@type":"Service","@id":BASE+f"/#{sid}","name":name,"serviceType":stype,"description":desc,"provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"}} for sid,name,stype,desc in [("contact-data","Contact data engineering","B2B contact data pipeline","Source mapping, normalization, deduplication and CRM-ready contact schemas."),("validation","Identity & validation","B2B contact validation","Domain resolution, mailbox-pattern testing, role fit and independent identity signals."),("deliverability","Deliverability infrastructure","Email deliverability infrastructure","Dedicated domains, SPF/DKIM/DMARC, MTA setup, reputation controls, warm-up and monitoring."),("first-touch","First-touch systems","B2B outreach systems","Signal capture, qualification filters, message architecture and reply routing.")]]]},nav="home"),
- dict(path="/services/index.html",title="B2B Contact Data, Validation & Deliverability Services",description="Contact data engineering, mailbox validation, sending-domain infrastructure and first-touch architecture for B2B outreach.",body=services_body,schema=services_schema,nav="services"),
+ dict(path="/index.html",title="Main Direct | B2B Outreach Supply Engine",description="B2B outreach supply engine for audience filters, verified contact supply, liveness controls, dedicated deliverability infrastructure and first-touch routing.",body=home_body,schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/#webpage","Main Direct"),*[{"@type":"Service","@id":BASE+f"/#{sid}","name":name,"serviceType":stype,"description":desc,"provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"}} for sid,name,stype,desc in [("signal-atlas","Signal Atlas","B2B audience research and outreach filters","Market description, buying triggers, evidence rules, disqualifiers and targeting filters."),("contact-supply","Verified Contact Supply","B2B contact discovery and validation","Company resolution, mailbox validation, identity checks, normalization, provenance and suppression handling."),("deliverability-engine","Deliverability Engine","Email deliverability infrastructure","Dedicated domains, SPF/DKIM/DMARC, warm-up gates, pacing, monitoring and reply routing."),("first-touch-routing","First-touch routing","B2B outreach systems","Qualification filters, message architecture, reply routing and suppression-aware follow-up.")]]]},nav="home"),
+ dict(path="/services/index.html",title="Main Direct Modules | Outreach Supply Engine",description="Four coupled outreach supply modules: Signal Atlas, Contact Supply, Deliverability Engine and first-touch routing.",body=services_body,schema=services_schema,nav="services"),
+ dict(path="/signal-atlas/index.html",title="Signal Atlas | B2B Audience Research & Outreach Filters",description="Signal Atlas turns a market description into audience filters, buying triggers, evidence rules, disqualifiers and first-touch architecture.",body=signal_atlas_body,schema=signal_schema,nav="signal"),
+ dict(path="/contact-supply/index.html",title="Verified Contact Supply | B2B Discovery & Validation",description="Controlled B2B contact supply with company resolution, mailbox validation, provenance, normalization, deduplication and suppression.",body=contact_supply_body,schema=supply_schema,nav="supply"),
+ dict(path="/deliverability-engine/index.html",title="Deliverability Engine | Dedicated Cold Email Infrastructure",description="Dedicated sending domains, SPF/DKIM/DMARC, warm-up gates, pacing, suppression and reply routing for professional B2B outreach.",body=engine_body,schema=engine_schema,nav="engine"),
+ dict(path="/playbooks/self-supply/index.html",title="Main Direct Self-Supply Playbook | Public Methodology",description="Public methodology showing how Main Direct applies contact filters, validation gates and deliverability controls to its own supply route.",body=selfplay_body,schema=self_schema,nav="playbook"),
+ dict(path="/ai/index.html",title="Main Direct AI Agent Guide | B2B Outreach Supply Engine",description="Public factual guide for AI assistants and answer engines describing Main Direct's outreach supply modules and required caveats.",body=ai_body,schema=ai_schema,robots="index,follow,max-snippet:-1,max-image-preview:large",nav="home"),
  dict(path="/playbooks/contact-to-inbox/index.html",title="Contact-to-Inbox System: Safe B2B Cold Email Architecture",description="A practical B2B cold email architecture: source mapping, contact validation, domain isolation, warm-up, monitoring and the first 80 words.",body=article_body,schema=article_schema,nav="playbook"),
- dict(path="/about/index.html",title="About Main Direct | B2B Data & Deliverability Engineering",description="Main Direct is an independent B2B contact-data and email-deliverability infrastructure practice led by Costa D.",body=about_body,schema=about_schema,nav="about"),
+ dict(path="/about/index.html",title="About Main Direct | B2B Outreach Supply Engine",description="Main Direct is an independent B2B outreach supply engine led by Costa D. Focus: filters, validated contact supply and deliverability.",body=about_body,schema=about_schema,nav="about"),
  dict(path="/faq/index.html",title="B2B Contact Data & Email Deliverability FAQ | Main Direct",description="Direct answers on B2B contact validation, sending domains, SPF/DKIM/DMARC, warm-up, inbox placement and Main Direct’s scope.",body=faq_body,schema=faq_schema,nav="home"),
  dict(path="/contact/thanks/index.html",title="Request received | Main Direct",description="Your Main Direct infrastructure review request was received.",body=thanks_body,schema={"@context":"https://schema.org","@graph":base_graph(BASE+"/contact/thanks/#webpage","Request received")},robots="noindex,nofollow",nav="contact"),
  dict(path="/contact/index.html",title="Contact Main Direct | Infrastructure Review",description="Use the Main Direct infrastructure review form to send segment, geography, current data and sending setup.",body=contact_body,schema=contact_schema,nav="contact"),
- dict(path="/privacy/index.html",title="Privacy | Main Direct",description="Main Direct site privacy: no analytics, cookies or forms. Static GitHub Pages hosting and direct email only.",body=privacy_body,schema=privacy_schema,robots="index,follow,max-snippet:-1,max-image-preview:large",nav="home"),
+ dict(path="/privacy/index.html",title="Privacy | Main Direct",description="Main Direct site privacy: no analytics or advertising cookies. Static GitHub Pages hosting and a form-delivery processor for contact requests.",body=privacy_body,schema=privacy_schema,robots="index,follow,max-snippet:-1,max-image-preview:large",nav="home"),
  dict(path="/404.html",title="Page not found | Main Direct",description="The requested Main Direct page was not found.",body=page404_body,schema={"@context":"https://schema.org","@graph":base_graph(BASE+"/404.html","Page not found")},robots="noindex,nofollow",nav="home"),
 ]
 for p in pages:

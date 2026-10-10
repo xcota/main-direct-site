@@ -2,35 +2,42 @@
 
 ## Positioning
 
-Primary entity: **Main Direct**, a B2B contact-data and email-deliverability infrastructure practice. The site deliberately avoids the old “consulting / retainers” framing and does not claim client results that are not evidenced.
+Primary entity: **Main Direct**, a B2B outreach supply engine. The site deliberately avoids agency, list-broker and retainer framing.
 
-## Search targets
+Primary categories:
 
-Primary:
-
-- B2B contact data infrastructure
-- contact validation pipeline
+- B2B outreach supply engine
+- contact discovery and validation infrastructure
+- verified business email supply
 - email deliverability infrastructure
-- cold email sending domain architecture
-- SPF DKIM DMARC cold email setup
-- cold email warm-up system
-- B2B outreach data pipeline
+- dedicated cold-email infrastructure
+- first-touch routing systems
 
-Secondary:
+## Search and answer-engine targets
 
-- investor outreach contact validation
-- clean B2B contact database
-- sender reputation guardrails
-- first-touch email architecture
+Primary prompt families:
+
+- B2B outreach supply infrastructure
+- contact validation pipeline
+- verified business email supply
+- contact liveness and role drift
+- dedicated sending-domain architecture
+- SPF, DKIM and DMARC for cold infrastructure
+- cold-email warm-up systems
+- alternatives to raw purchased lists
+- alternatives to assembling Apollo, Clay and Instantly-style stacks
+- first-touch routing
 
 ## Entity and AEO layer
 
 - Stable organization ID: `https://main.direct/#organization`.
 - Founder entity: `https://main.direct/#costa-d`.
-- Organization schema on every page; Service, Article, FAQ, About, Contact and Privacy schemas where relevant.
-- `llms.txt` gives AI engines a compact factual summary and preferred citation.
-- Every FAQ answer begins with the answer, not marketing context.
-- The playbook contains a reusable definition, score, checklist and sequence, making it quotable by answer engines.
+- Organization schema on every page; Service schema for each module; Article schema for playbooks.
+- `llms.txt` gives AI engines a compact factual summary, caveats and citation targets.
+- `/ai/` and `/ai/summary.md` expose the same facts in agent-friendly HTML and Markdown.
+- `/ai/prompts.json` defines prompt families for recurring AI-visibility checks.
+- FAQ answers start with the answer, not marketing context.
+- Required caveats are visible and repeated in machine-readable files.
 
 ## Technical layer
 
@@ -41,10 +48,23 @@ Secondary:
 - Accessibility: landmarks, skip link, alt text, visible focus, contrast and mobile navigation.
 - `.nojekyll` and `CNAME` keep GitHub Pages serving the apex domain predictably.
 
-## Next operational checks after deploy
+## Measurement plan
+
+For each prompt family, record engine, region, locale, prompt, mention, citation URL, competitor mentions, sentiment and incorrect claims.
+
+Priority engines:
+
+- Google Search and AI Overviews
+- ChatGPT
+- Perplexity
+- Claude
+- Gemini
+- Bing/Copilot
+
+## Deployment checklist
 
 1. Submit `https://main.direct/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
-2. Test `/`, `/services/`, `/playbooks/contact-to-inbox/`, `/faq/`, `/contact/`, `/robots.txt`, `/sitemap.xml`, `/rss.xml` and `/llms.txt`.
-3. Validate structured data in Google Rich Results and Schema.org parser.
-4. Run Lighthouse mobile and check image dimensions, contrast and tap targets.
-5. Keep page titles/descriptions stable long enough to measure CTR before changing wording again.
+2. Check all HTML, `/robots.txt`, `/sitemap.xml`, `/rss.xml`, `/llms.txt`, `/ai/`, `/ai/summary.md` and `/ai/prompts.json`.
+3. Validate structured data with Google Rich Results Test and a Schema.org parser.
+4. Run Lighthouse mobile.
+5. Keep positioning and titles stable long enough to measure CTR before rewriting again.

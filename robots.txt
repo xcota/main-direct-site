@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
+Allow: /ai/
+Allow: /ai/summary.md
+Allow: /ai/prompts.json
+Disallow: /contact/thanks/
 
-# Explicit permission for AI answer/search crawlers.
+# AI answer/search crawlers may read the public product facts and caveats.
 User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot

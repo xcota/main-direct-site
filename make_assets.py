@@ -52,8 +52,8 @@ def make_og():
     x=72; y=270
     for part,color in (("main",WHITE),(".",ACCENT),("direct",WHITE)):
         d.text((x,y),part,font=title,fill=color); x+=d.textlength(part,font=title)
-    d.text((72,368),"B2B contact data, validation &",font=sub,fill=WHITE)
-    d.text((72,420),"email deliverability infrastructure",font=sub,fill=WHITE)
+    d.text((72,368),"B2B outreach supply",font=sub,fill=WHITE)
+    d.text((72,420),"filters · contacts · deliverability",font=sub,fill=WHITE)
     for i,label in enumerate(["Contact engineering","Independent validation","Sending-domain infrastructure"]):
         d.ellipse([72,502+i*0,82,512+i*0],fill=MINT) if i==0 else None
     d.text((100,492),"Contact engineering · Independent validation · Sending-domain infrastructure",font=small,fill=GREY)
@@ -62,7 +62,7 @@ def make_og():
 
 def manifest():
     import json
-    data={"name":"Main Direct","short_name":"Main Direct","description":"B2B contact data and email deliverability infrastructure.","start_url":"/","scope":"/","display":"standalone","background_color":"#06090d","theme_color":"#06090d","icons":[{"src":"/assets/img/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"/assets/img/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"/apple-touch-icon.png","sizes":"180x180","type":"image/png","purpose":"maskable"}]}
+    data={"name":"Main Direct","short_name":"Main Direct","description":"B2B outreach supply engine.","start_url":"/","scope":"/","display":"standalone","background_color":"#06090d","theme_color":"#06090d","icons":[{"src":"/assets/img/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"/assets/img/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"/apple-touch-icon.png","sizes":"180x180","type":"image/png","purpose":"maskable"}]}
     (ROOT/"site.webmanifest").write_text(json.dumps(data,indent=2)+"\n")
 
 favicon_svg()

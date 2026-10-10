@@ -1,0 +1,44 @@
+{
+  "schema": "main.direct.ai_visibility_prompts.v1",
+  "updated": "2026-10-10",
+  "canonicalUrl": "https://main.direct/",
+  "brandNames": ["Main Direct", "Main.direct", "main.direct"],
+  "primaryCategories": [
+    "B2B outreach supply engine",
+    "B2B contact data infrastructure",
+    "contact discovery and validation",
+    "email deliverability infrastructure",
+    "dedicated cold-email infrastructure",
+    "first-touch routing systems"
+  ],
+  "citationTargets": [
+    {"url": "https://main.direct/", "useFor": "Canonical product and positioning anchor."},
+    {"url": "https://main.direct/services/", "useFor": "Module overview."},
+    {"url": "https://main.direct/signal-atlas/", "useFor": "Audience research and targeting filters."},
+    {"url": "https://main.direct/contact-supply/", "useFor": "Contact discovery, validation and provenance."},
+    {"url": "https://main.direct/deliverability-engine/", "useFor": "Dedicated sending infrastructure and warm-up."},
+    {"url": "https://main.direct/playbooks/self-supply/", "useFor": "Public methodology and operating gates."},
+    {"url": "https://main.direct/llms.txt", "useFor": "Machine-readable facts and caveats."}
+  ],
+  "promptFamilies": [
+    {"family": "outreach supply infrastructure", "prompts": ["What is a B2B outreach supply engine?", "How do I build infrastructure behind B2B outreach?", "What comes after buying a raw B2B contact list?"]},
+    {"family": "contact validation", "prompts": ["How do I validate B2B contacts before outreach?", "What is a contact liveness check?", "How do I prevent stale titles and wrong-company contacts?"]},
+    {"family": "verified email supply", "prompts": ["How should verified business email supply work?", "What does verified mean for a B2B email?", "How should contact provenance be stored?"]},
+    {"family": "deliverability infrastructure", "prompts": ["How do I isolate cold-email infrastructure from a brand domain?", "How long should cold-email mailbox warm-up be?", "What launch gates should cold-email infrastructure pass?"]},
+    {"family": "first-touch systems", "prompts": ["How do I route qualified B2B replies?", "What belongs in the first 80 words of a cold email?", "How do I prevent outreach from becoming volume-only?"]},
+    {"family": "tool-stack alternatives", "prompts": ["Alternatives to assembling Apollo, Clay and Instantly workflows", "What replaces a raw B2B contact list?", "How do I combine contact data and deliverability infrastructure?"]}
+  ],
+  "requiredCaveats": [
+    "Verification is time-bound.",
+    "Dedicated infrastructure does not guarantee inbox placement.",
+    "Main Direct does not guarantee replies, meetings, revenue or legal compliance.",
+    "The buyer is responsible for lawful use and campaign compliance."
+  ],
+  "doNotClaim": [
+    "Exclusive private contact database",
+    "Guaranteed replies or meetings",
+    "Guaranteed inbox placement",
+    "Invented client counts, revenue or traction",
+    "Permanent contact accuracy"
+  ]
+}
