@@ -282,7 +282,7 @@ privacy_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/pri
 
 contact_body=f'''  <section class="page-hero"><div class="wrap reading"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Contact</nav><h1>Request an infrastructure review</h1><p class="lead">Answer five short questions. This is enough to identify whether the current bottleneck is targeting, data, validation, deliverability or message architecture.</p></div></section>
   <section aria-labelledby="lead-form-title"><div class="wrap reading">
-    <form class="card lead-form" id="lead-form-title" action="https://formsubmit.co/hello@main.direct" method="post" accept-charset="utf-8">
+    <form class="card lead-form" id="lead-form-title" action="https://formsubmit.co/cozstamain@gmail.com" method="post" accept-charset="utf-8">
       <input type="hidden" name="_subject" value="Main.direct infrastructure review">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
