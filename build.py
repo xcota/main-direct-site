@@ -16,11 +16,10 @@ def organization():
       "@type":"Organization","@id":ORG,"name":"Main Direct","alternateName":["main.direct"],
       "url":BASE+"/","logo":{"@type":"ImageObject","@id":BASE+"/#logo","url":BASE+"/assets/img/icon-512.png","contentUrl":BASE+"/assets/img/icon-512.png","width":512,"height":512,"caption":"Main Direct"},
       "image":[{"@type":"ImageObject","@id":BASE+"/#ogimage","url":BASE+"/og.png","contentUrl":BASE+"/og.png","width":1200,"height":630,"caption":"Main Direct — B2B contact data and email deliverability infrastructure"}],
-      "description":DESC,"email":"hello@main.direct",
+      "description":DESC,
       "founder":{"@type":"Person","@id":BASE+"/#costa-d","name":"Costa D","givenName":"Konstantin","jobTitle":"Founder","url":"https://www.linkedin.com/in/xcota/"},
       "areaServed":{"@type":"Place","name":"Worldwide"},"knowsLanguage":["en","ru"],
-      "sameAs":["https://github.com/xcota/main-direct-site","https://www.linkedin.com/in/xcota/"],
-      "contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@main.direct","availableLanguage":["English","Russian"],"areaServed":"Worldwide"}
+      "sameAs":["https://github.com/xcota/main-direct-site","https://www.linkedin.com/in/xcota/"]
     }
 
 def base_graph(page_id,page_name,page_type="WebPage"):
@@ -92,7 +91,7 @@ def shell(*,title,description,path,body,page_schema,robots="index,follow,max-sni
       <div class="wrap"><div class="cta-band">
         <h2 id="cta-title">Need the infrastructure, not another list?</h2>
         <p>Send the segment, target geographies, current data and sending setup. I’ll show whether the constraint is data quality, validation, deliverability or message architecture.</p>
-        <a class="button" href="mailto:hello@main.direct?subject=Main.direct%20infrastructure%20review">Email hello@main.direct</a>
+        <a class="button" href="/contact/">Request infrastructure review</a>
       </div></div>
     </section>
   </main>
@@ -102,7 +101,7 @@ def shell(*,title,description,path,body,page_schema,robots="index,follow,max-sni
         <div><a class="logo" href="/">main<strong>.</strong>direct</a><p style="margin-top:16px">B2B contact data, validation and email deliverability infrastructure.</p></div>
         <nav aria-label="Site"><h2>Site</h2><ul><li><a href="/">Home</a></li><li><a href="/services/">Services</a></li><li><a href="/playbooks/contact-to-inbox/">Playbook</a></li><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li></ul></nav>
         <nav aria-label="Technical"><h2>Technical</h2><ul><li><a href="/sitemap.xml">Sitemap</a></li><li><a href="/rss.xml">RSS</a></li><li><a href="/llms.txt">llms.txt</a></li><li><a href="/robots.txt">Robots</a></li></ul></nav>
-        <div><h2>Contact</h2><p><a href="mailto:hello@main.direct">hello@main.direct</a></p><p>Remote · Worldwide<br>English · Russian</p></div>
+        <div><h2>Contact</h2><p><a href="/contact/">Infrastructure review form</a></p><p>Remote · Worldwide<br>English · Russian</p></div>
       </div>
       <div class="footer-bottom"><span>© 2026 Main Direct</span><span>Built without trackers or cookies</span><a href="/privacy/">Privacy</a></div>
     </div>
@@ -263,7 +262,7 @@ faq_items=[
 ("Can you guarantee inbox placement?","No. Placement depends on recipient provider, audience quality, content, sender history and volume. Any provider promising guaranteed inbox placement is not describing a controllable system."),
 ("Which industries do you work with?","The system is designed for B2B teams where one relevant reply matters: technical founders, revenue teams, partnerships and fundraising-related outreach."),
 ("Where is Main Direct based?","Main Direct operates remotely and serves clients worldwide. English and Russian are supported."),
-("How do we start?","Send the target segment, geography, current data, sending domains and volume plan to hello@main.direct. The first review identifies whether the bottleneck is targeting, data, validation, deliverability or message architecture.")
+("How do we start?","Use the contact form to send the target segment, geography, current data, sending domains and volume plan. The first review identifies whether the bottleneck is targeting, data, validation, deliverability or message architecture.")
 ]
 faq_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/faq/#webpage","Main Direct FAQ"),{"@type":"FAQPage","@id":BASE+"/faq/#faq","url":BASE+"/faq/","name":"B2B contact data and email deliverability FAQ","inLanguage":"en","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_items]}]}
 faq_html="".join(f'<div class="faq-item"><h3 id="q{i}">{q}</h3><p>{a}</p></div>' for i,(q,a) in enumerate(faq_items,1))
@@ -281,22 +280,45 @@ article_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/pla
 contact_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/contact/#webpage","Contact Main Direct"),{"@type":"ContactPage","@id":BASE+"/contact/#contactpage","url":BASE+"/contact/","name":"Contact Main Direct","mainEntity":{"@id":ORG}}]}
 privacy_schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/privacy/#webpage","Privacy",),{"@type":"WebPage","@id":BASE+"/privacy/#privacy","url":BASE+"/privacy/","name":"Privacy","description":"Main Direct privacy and tracking statement."}]}
 
-contact_body=f'''  <section class="page-hero"><div class="wrap reading"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Contact</nav><h1>Start with the current constraint</h1><p class="lead">Send context before asking for a scope. A useful review separates data, validation, infrastructure and message problems.</p></div></section>
-  <section><div class="wrap reading contact-card card">
-    <span class="tag">Direct email</span><h2>hello@main.direct</h2><p style="margin:18px 0 0"><a href="mailto:hello@main.direct?subject=Main.direct%20infrastructure%20review&amp;body=Segment%3A%0AGeography%3A%0ACurrent%20data%3A%0ASending%20domains%2Fvolume%3A%0AMain%20constraint%3A">Open a pre-filled review request</a></p>
-    <p class="quiet" style="margin-top:28px">Include: 1) target segment, 2) geography, 3) current contact source, 4) sending domains and monthly volume, 5) what is failing.</p>
-    <p class="quiet">No forms, cookies or tracking scripts.</p>
+contact_body=f'''  <section class="page-hero"><div class="wrap reading"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Contact</nav><h1>Request an infrastructure review</h1><p class="lead">Answer five short questions. This is enough to identify whether the current bottleneck is targeting, data, validation, deliverability or message architecture.</p></div></section>
+  <section aria-labelledby="lead-form-title"><div class="wrap reading">
+    <form class="card lead-form" id="lead-form-title" action="https://formsubmit.co/hello@main.direct" method="post" accept-charset="utf-8">
+      <input type="hidden" name="_subject" value="Main.direct infrastructure review">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://main.direct/contact/thanks/">
+      <label class="hp" for="company_mail_drop">Do not fill this field</label><input class="hp" type="text" id="company_mail_drop" name="_honey" autocomplete="off" tabindex="-1">
+      <div class="field"><label for="name">Your name *</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Alex Ivanov" required></div>
+      <div class="field"><label for="work_email">Work email *</label><input id="work_email" name="work_email" type="email" autocomplete="email" inputmode="email" placeholder="alex@company.com" required></div>
+      <div class="field"><label for="company">Company or project *</label><input id="company" name="company" type="text" autocomplete="organization" placeholder="Company name" required></div>
+      <div class="field"><label for="website">Website<span class="hint"> if public</span></label><input id="website" name="website" type="url" inputmode="url" placeholder="https://company.com"></div>
+      <div class="field"><label for="segment">Target segment *</label><input id="segment" name="segment" type="text" placeholder="Crypto infrastructure founders, EU logistics operators, etc." required></div>
+      <div class="field"><label for="geography">Geography *</label><input id="geography" name="geography" type="text" placeholder="DACH, North America, SEA, global" required></div>
+      <div class="field full"><label for="current_data">Current contact data / source</label><textarea id="current_data" name="current_data" placeholder="Purchased list, CRM export, event contacts, no list yet, etc."></textarea></div>
+      <div class="field full"><label for="sending_setup">Sending setup / volume</label><textarea id="sending_setup" name="sending_setup" placeholder="Domains, ESP/MTA, monthly volume, bounce rate, main deliverability issue."></textarea></div>
+      <div class="field full"><label for="constraint">Main constraint *</label><textarea id="constraint" name="constraint" placeholder="We have contacts but no replies / emails go to spam / no clean route to decision-makers." required></textarea></div>
+      <div class="form-foot">
+        <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree that Main Direct may use these details to respond to this request. No newsletter, no unrelated marketing.</span></label>
+        <button class="button" type="submit">Send review request</button>
+      </div>
+      <p class="form-note">The form uses a delivery processor to route submissions to Main Direct. It adds no tracking cookies or third-party analytics.</p>
+    </form>
   </div></section>'''
 
 privacy_body=f'''  <section class="page-hero"><div class="wrap reading"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Privacy</nav><h1>Privacy</h1><p class="lead">This site has no analytics, cookies, forms or cross-site tracking.</p></div></section>
   <section><div class="wrap reading"><div class="article-content">
+    <h2>What we collect</h2><p>The contact form collects only the details you submit: name, work email, company or project, website, target segment, geography, current data, sending setup and your stated constraint. We use them to assess the request and reply.</p>
+    <h2>Delivery processing</h2><p>Static hosting cannot receive form posts directly. Submissions are routed through a form-delivery processor to Main Direct’s private mailbox. The processor acts as a delivery intermediary for this request and is not used to profile you or add you to a mailing list.</p>
     <h2>Site hosting</h2><p>Static files are served by GitHub Pages. Hosting infrastructure may process standard request logs for availability, security and abuse prevention.</p>
-    <h2>Contact email</h2><p>If you email hello@main.direct, the message and your address are used to reply and assess the request. Do not send confidential credentials or personal data that the review does not require.</p>
+    <h2>No tracking</h2><p>The site has no analytics cookies, advertising pixels, session replay or cross-site tracking. Your browser may store standard form-input data locally until you close or clear it.</p>
     <h2>Data sharing</h2><p>Request contents are not sold or shared for advertising. Operational data stays within the systems needed to deliver the work.</p>
-    <h2>Retention</h2><p>Correspondence is retained only while useful for the request, project or legal record. Ask by email if you need deletion of non-essential correspondence.</p>
+    <h2>Retention</h2><p>Correspondence is retained only while useful for the request, project or legal record. Reply through the original thread if you need deletion of non-essential correspondence.</p>
   </div></div></section>'''
 
 page404_body=f'''  <section class="page-hero"><div class="wrap reading"><p class="eyebrow">404</p><h1>Route not found</h1><p class="lead">The page is missing. Use the primary sections below.</p><div class="hero-actions"><a class="button" href="/">Home</a><a class="button ghost" href="/services/">Services</a><a class="button ghost" href="/contact/">Contact</a></div></div></section>'''
+
+thanks_body=f'''  <section class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / Contact / Thank you</nav></div></section>
+  <section><div class="wrap"><div class="card thanks-panel"><p class="eyebrow">Request received</p><h1>Thanks. Next step is simple.</h1><p class="lead">I’ll review the segment, current route and constraint, then reply with the first diagnostic or a request for missing context.</p><div class="hero-actions" style="justify-content:center"><a class="button" href="/playbooks/contact-to-inbox/">Read the system</a><a class="button ghost" href="/">Back home</a></div></div></div></section>'''
 
 pages=[
  dict(path="/index.html",title="Main Direct | B2B Contact Data & Email Infrastructure",description="B2B contact data, validation and email deliverability infrastructure for high-signal outreach. Built as an auditable system, not a rented list.",body=home_body,schema={"@context":"https://schema.org","@graph":[*base_graph(BASE+"/#webpage","Main Direct"),*[{"@type":"Service","@id":BASE+f"/#{sid}","name":name,"serviceType":stype,"description":desc,"provider":{"@id":ORG},"areaServed":{"@type":"Place","name":"Worldwide"}} for sid,name,stype,desc in [("contact-data","Contact data engineering","B2B contact data pipeline","Source mapping, normalization, deduplication and CRM-ready contact schemas."),("validation","Identity & validation","B2B contact validation","Domain resolution, mailbox-pattern testing, role fit and independent identity signals."),("deliverability","Deliverability infrastructure","Email deliverability infrastructure","Dedicated domains, SPF/DKIM/DMARC, MTA setup, reputation controls, warm-up and monitoring."),("first-touch","First-touch systems","B2B outreach systems","Signal capture, qualification filters, message architecture and reply routing.")]]]},nav="home"),
@@ -304,7 +326,8 @@ pages=[
  dict(path="/playbooks/contact-to-inbox/index.html",title="Contact-to-Inbox System: Safe B2B Cold Email Architecture",description="A practical B2B cold email architecture: source mapping, contact validation, domain isolation, warm-up, monitoring and the first 80 words.",body=article_body,schema=article_schema,nav="playbook"),
  dict(path="/about/index.html",title="About Main Direct | B2B Data & Deliverability Engineering",description="Main Direct is an independent B2B contact-data and email-deliverability infrastructure practice led by Costa D.",body=about_body,schema=about_schema,nav="about"),
  dict(path="/faq/index.html",title="B2B Contact Data & Email Deliverability FAQ | Main Direct",description="Direct answers on B2B contact validation, sending domains, SPF/DKIM/DMARC, warm-up, inbox placement and Main Direct’s scope.",body=faq_body,schema=faq_schema,nav="home"),
- dict(path="/contact/index.html",title="Contact Main Direct | Infrastructure Review",description="Email hello@main.direct with segment, geography, current data and sending setup for a Main Direct infrastructure review.",body=contact_body,schema=contact_schema,nav="contact"),
+ dict(path="/contact/thanks/index.html",title="Request received | Main Direct",description="Your Main Direct infrastructure review request was received.",body=thanks_body,schema={"@context":"https://schema.org","@graph":base_graph(BASE+"/contact/thanks/#webpage","Request received")},robots="noindex,nofollow",nav="contact"),
+ dict(path="/contact/index.html",title="Contact Main Direct | Infrastructure Review",description="Use the Main Direct infrastructure review form to send segment, geography, current data and sending setup.",body=contact_body,schema=contact_schema,nav="contact"),
  dict(path="/privacy/index.html",title="Privacy | Main Direct",description="Main Direct site privacy: no analytics, cookies or forms. Static GitHub Pages hosting and direct email only.",body=privacy_body,schema=privacy_schema,robots="index,follow,max-snippet:-1,max-image-preview:large",nav="home"),
  dict(path="/404.html",title="Page not found | Main Direct",description="The requested Main Direct page was not found.",body=page404_body,schema={"@context":"https://schema.org","@graph":base_graph(BASE+"/404.html","Page not found")},robots="noindex,nofollow",nav="home"),
 ]

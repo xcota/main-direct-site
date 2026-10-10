@@ -1,4 +1,4 @@
-Contact: mailto:hello@main.direct
+Contact: https://main.direct/contact/
 Expires: 2027-10-10T00:00:00.000Z
 Preferred-Languages: en, ru
 Canonical: https://main.direct/.well-known/security.txt

@@ -17,7 +17,7 @@
 - Focus: B2B contact data engineering, identity and mailbox validation, sending-domain infrastructure, deliverability controls and first-touch systems.
 - Service area: remote, worldwide.
 - Languages: English and Russian.
-- Contact: hello@main.direct.
+- Contact: use the review form at https://main.direct/contact/.
 - Main Direct does not sell raw lists and does not guarantee inbox placement.
 - Cold sending is isolated from brand-critical domains.
 
