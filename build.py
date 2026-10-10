@@ -7,7 +7,13 @@ BASE="https://main.direct"
 ORG="https://main.direct/#organization"
 SITE="https://main.direct/#website"
 DESC="Main Direct is a B2B outreach supply engine: audience filters, verified contact supply, liveness controls, dedicated deliverability infrastructure and first-touch routing."
-UPDATED="2026-10-10"
+UPDATED="2026-10-11"
+
+def canonical_path(file_path):
+    """Map a generated file path to its public canonical URL path."""
+    if file_path == "/index.html":
+        return "/"
+    return "/" + file_path.strip("/").removesuffix("/index.html") + "/"
 
 def ld(obj): return json.dumps(obj,ensure_ascii=False,separators=(",",":"))
 
@@ -540,5 +546,15 @@ pages=[
 for p in pages:
     out=ROOT/p["path"].lstrip("/")
     out.parent.mkdir(parents=True,exist_ok=True)
-    out.write_text(shell(title=p["title"],description=p["description"],path="/" if p["path"]=="/index.html" else "/"+p["path"].strip("/")+"/",body=p["body"],page_schema=p["schema"],robots=p.get("robots","index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"),nav=p.get("nav","home")),encoding="utf-8")
+    out.write_text(shell(title=p["title"],description=p["description"],path=canonical_path(p["path"]),body=p["body"],page_schema=p["schema"],robots=p.get("robots","index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"),nav=p.get("nav","home")),encoding="utf-8")
     print(out.relative_to(ROOT))
+
+# Keep the Google/Bing sitemap to canonical, indexable HTML pages. Markdown/JSON
+# AI surfaces are discoverable through HTML links, llms.txt and head alternates.
+sitemap_urls=[canonical_path(p["path"]) for p in pages if not canonical_path(p["path"]).startswith("/contact/thanks/") and p["path"] != "/404.html"]
+sitemap_lines=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+for path in sitemap_urls:
+    sitemap_lines.append(f'  <url><loc>{BASE}{path}</loc><lastmod>{UPDATED}</lastmod></url>')
+sitemap_lines.append('</urlset>')
+(ROOT/'sitemap.xml').write_text('\n'.join(sitemap_lines)+'\n',encoding='utf-8')
+print('sitemap.xml')
