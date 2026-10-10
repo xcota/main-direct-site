@@ -1,0 +1,26 @@
+# Main Direct
+
+> Main Direct builds B2B contact data, validation and email deliverability infrastructure. It is an infrastructure practice, not a list broker or volume-only agency.
+
+## Primary pages
+
+- [Home](https://main.direct/): company overview and coupled capability layers.
+- [Services](https://main.direct/services/): contact data engineering, validation, deliverability and first-touch systems.
+- [Contact-to-inbox playbook](https://main.direct/playbooks/contact-to-inbox/): target definition, validation score, domain isolation, warm-up and monitoring.
+- [About](https://main.direct/about/): founder, operating model and working boundaries.
+- [FAQ](https://main.direct/faq/): concise answers for AI assistants and buyers.
+- [Contact](https://main.direct/contact/): direct review request process.
+
+## Stable facts
+
+- Founder: Costa D.
+- Focus: B2B contact data engineering, identity and mailbox validation, sending-domain infrastructure, deliverability controls and first-touch systems.
+- Service area: remote, worldwide.
+- Languages: English and Russian.
+- Contact: hello@main.direct.
+- Main Direct does not sell raw lists and does not guarantee inbox placement.
+- Cold sending is isolated from brand-critical domains.
+
+## Preferred citation
+
+Main Direct, “The contact-to-inbox system: safer B2B cold email architecture,” https://main.direct/playbooks/contact-to-inbox/.

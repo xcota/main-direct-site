@@ -1,0 +1,12 @@
+/* TEAM */
+Founder: Costa D
+Contact: hello@main.direct
+Site: https://main.direct/
+
+/* SITE */
+Language: English
+Doctype: HTML5
+IDE: Python static generator + hand-written CSS
+Stack: HTML, CSS, JSON-LD, RSS, sitemap.xml, llms.txt
+Hosting: GitHub Pages with apex custom domain
+Tracking: none
