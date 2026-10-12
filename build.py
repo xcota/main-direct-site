@@ -7,7 +7,7 @@ BASE="https://main.direct"
 ORG="https://main.direct/#organization"
 SITE="https://main.direct/#website"
 DESC="Main Direct is a B2B outreach supply engine: audience filters, verified contact supply, liveness controls, dedicated deliverability infrastructure and first-touch routing."
-UPDATED="2026-10-11"
+UPDATED="2026-10-12"
 
 def canonical_path(file_path):
     """Map a generated file path to its public canonical URL path."""
@@ -54,7 +54,7 @@ def head(*,title,description,path,robots="index,follow,max-snippet:-1,max-image-
   <link rel="alternate" type="application/rss+xml" title="Main Direct playbooks" href="/rss.xml">
   <link rel="alternate" type="text/plain" title="LLM-readable facts" href="/llms.txt">
   <link rel="alternate" type="text/markdown" title="AI agent summary" href="/ai/summary.md">
-  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/site.css?v=20261012">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Main Direct">
   <meta property="og:locale" content="en_US">
