@@ -46,3 +46,24 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 38px;background:#050
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}.calc-inputs{display:grid;gap:16px}.calc-inputs label{display:grid;gap:8px;color:var(--ink);font-size:14px;font-weight:700}.calc-inputs input,.calc-inputs select{min-height:48px;border:1px solid var(--strong);border-radius:10px;background:rgba(255,255,255,.04);color:var(--ink);padding:12px 14px;font:inherit}.calc-output{display:grid;gap:14px;align-content:start}.metric{padding:18px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03)}.metric strong{display:block;font-size:26px;letter-spacing:-.03em}.metric span{color:var(--muted);font-size:13px}.calc-note{color:var(--muted);font-size:13px}
 .artifact{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;overflow:auto}.artifact table{width:100%;border-collapse:collapse;font-size:14px}.artifact th,.artifact td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.artifact th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}
 @media(max-width:880px){.matrix,.calc{grid-template-columns:1fr}}
+
+/* Mobile/touch header: logo + CTA on row 1, primary links scroll on row 2. */
+@media (max-width:1040px){
+  header.site{padding:10px 0}
+  .nav{flex-wrap:wrap;align-items:center;gap:12px 16px;min-height:0;max-width:100%}
+  .nav > .logo{flex:0 0 auto;order:0}
+  .nav > .button{flex:0 0 auto;order:1;width:auto;min-height:40px;padding:10px 16px;white-space:nowrap}
+  .nav > nav{flex:1 1 100%;min-width:0;order:2}
+  .menu{min-width:0;max-width:100%;gap:14px;overflow-x:auto;padding:2px 0 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .menu::-webkit-scrollbar{display:none}
+  .menu li:first-child{display:none}
+  .menu a{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
+}
+
+/* Phones: drop the duplicate header CTA and keep the sticky bar compact. */
+@media (max-width:620px){
+  header.site{position:static;padding:8px 0}
+  .nav > .button{display:none}
+  .nav > nav{order:1}
+  .menu{padding:0}
+}
