@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+
+const entries = await getCollection('pages');
+const entry = entries.find((item) => item.data.path === '/404.html');
+if (!entry) throw new Error('Missing 404 content entry');
+const { Content } = await render(entry);
+const typedEntry = entry satisfies CollectionEntry<'pages'>;
+---
+
+<Base {...typedEntry.data}>
+  <Content />
+</Base>

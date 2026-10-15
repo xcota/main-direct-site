@@ -1,0 +1,22 @@
+{
+  "name": "main-direct-site",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && python3 scripts/publish_dist.py && python3 scripts/verify_static.py",
+    "preview": "astro preview",
+    "clean:site": "python3 scripts/publish_dist.py --clean-only",
+    "check": "astro check",
+    "verify:static": "python3 scripts/verify_static.py"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.1.0",
+    "astro": "^7.4.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.0.0"
+  }
+}

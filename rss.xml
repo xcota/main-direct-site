@@ -5,21 +5,21 @@
     <link>https://main.direct/</link>
     <description>Infrastructure-first B2B contact supply and email deliverability playbooks.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 10 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://main.direct/rss.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title>Main Direct self-supply playbook</title>
-      <link>https://main.direct/playbooks/self-supply/</link>
-      <guid isPermaLink="true">https://main.direct/playbooks/self-supply/</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
-      <description>Public methodology for audience filters, validation gates, contact supply and deliverability controls.</description>
-    </item>
     <item>
       <title>The contact-to-inbox system: safer B2B cold email architecture</title>
       <link>https://main.direct/playbooks/contact-to-inbox/</link>
       <guid isPermaLink="true">https://main.direct/playbooks/contact-to-inbox/</guid>
-      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
       <description>A five-layer B2B cold email architecture covering target definition, source mapping, contact validation, sending-domain isolation, warm-up and monitoring.</description>
+    </item>
+    <item>
+      <title>Main Direct self-supply playbook</title>
+      <link>https://main.direct/playbooks/self-supply/</link>
+      <guid isPermaLink="true">https://main.direct/playbooks/self-supply/</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Public methodology for applying Main Direct's contact supply, validation and deliverability layer to itself.</description>
     </item>
   </channel>
 </rss>

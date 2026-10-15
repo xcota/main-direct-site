@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages', ({ data }) => data.path !== '/404.html');
+  const routePaths = new Set(pages.map((entry) => entry.data.path));
+  const generatedRoutes = new Set(['/sitemap.xml', '/rss.xml', '/llms.txt', '/ai/summary.md', '/ai/prompts.json']);
+
+  for (const entry of pages) {
+    for (const link of entry.data.internalLinks) {
+      if (!routePaths.has(link.url) && !generatedRoutes.has(link.url)) {
+        throw new Error(`Broken internal link in ${entry.id}: ${link.url}`);
+      }
+    }
+
+    if (!entry.body?.includes('<h1')) {
+      throw new Error(`Page has no visible H1: ${entry.data.path}`);
+    }
+
+    if (entry.data.pageType === 'ArticlePage' && !entry.body.includes('Short answer:')) {
+      throw new Error(`Article has no visible short answer: ${entry.data.path}`);
+    }
+  }
+
+  return pages.map((entry) => ({
+    params: { page: entry.data.path === '/' ? undefined : entry.data.path.replace(/^\//, '').replace(/\/$/, '') },
+    props: { entry }
+  }));
+}
+
+type Props = { entry: CollectionEntry<'pages'> };
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Base {...entry.data}>
+  <Content />
+</Base>

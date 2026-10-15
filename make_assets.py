@@ -2,7 +2,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 ROOT = Path(__file__).parent
-ASSETS = ROOT / "assets"
+PUBLIC = ROOT / "public"
+ASSETS = PUBLIC / "assets"
 IMG = ASSETS / "img"
 IMG.mkdir(parents=True, exist_ok=True)
 
@@ -37,7 +38,7 @@ def favicon_svg():
   <text x="23" y="44" font-family="ui-sans-serif,-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="36" font-weight="800" fill="#e8eef6" text-anchor="middle">m</text>
   <circle cx="47" cy="42" r="6" fill="#5b9dff"/>
 </svg>'''
-    (ROOT/"favicon.svg").write_text(svg)
+    (PUBLIC/"favicon.svg").write_text(svg)
 
 def make_og():
     W,H=1200,630; im=Image.new("RGB",(W,H),BG); d=ImageDraw.Draw(im)
@@ -58,17 +59,17 @@ def make_og():
         d.ellipse([72,502+i*0,82,512+i*0],fill=MINT) if i==0 else None
     d.text((100,492),"Contact engineering · Independent validation · Sending-domain infrastructure",font=small,fill=GREY)
     d.text((72,548),"main.direct",font=ImageFont.truetype(BOLD,28),fill=ACCENT)
-    im.save(ROOT/"og.png",optimize=True,progressive=True)
+    im.save(PUBLIC/"og.png",optimize=True,progressive=True)
 
 def manifest():
     import json
     data={"name":"Main Direct","short_name":"Main Direct","description":"B2B outreach supply engine.","start_url":"/","scope":"/","display":"standalone","background_color":"#06090d","theme_color":"#06090d","icons":[{"src":"/assets/img/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"/assets/img/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},{"src":"/apple-touch-icon.png","sizes":"180x180","type":"image/png","purpose":"maskable"}]}
-    (ROOT/"site.webmanifest").write_text(json.dumps(data,indent=2)+"\n")
+    (PUBLIC/"site.webmanifest").write_text(json.dumps(data,indent=2)+"\n")
 
 favicon_svg()
 save_png(icon(512),IMG/"icon-512.png")
 save_png(icon(192),IMG/"icon-192.png")
-save_png(icon(180,.16,rounded_mask=True),(ROOT/"apple-touch-icon.png"))
-icon(32).save(ROOT/"favicon.ico",sizes=[(16,16),(32,48)])
+save_png(icon(180,.16,rounded_mask=True),(PUBLIC/"apple-touch-icon.png"))
+icon(32).save(PUBLIC/"favicon.ico",sizes=[(16,16),(32,48)])
 make_og(); manifest()
 print("assets generated")

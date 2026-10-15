@@ -67,3 +67,14 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 38px;background:#050
   .nav > nav{order:1}
   .menu{padding:0}
 }
+
+/* AEO answer and internal-link surfaces */
+.answer-block{background:rgba(91,157,255,.07);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:44px 0}
+.answer-block h2{margin:10px 0 12px}
+.related-links{padding:44px 0}
+.related-links h2{font-size:24px;margin-bottom:16px}
+.related-links ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.related-links li{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03)}
+.related-links a{display:block;min-height:100%;padding:16px;color:var(--ink);font-weight:700}
+.related-links a:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:760px){.related-links ul{grid-template-columns:1fr}.answer-block{padding:36px 0}}

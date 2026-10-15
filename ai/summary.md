@@ -1,17 +1,13 @@
 # Main Direct — compact AI summary
 
-Main Direct is a B2B outreach supply engine. It converts a market description into auditable supply infrastructure: audience filters, contact discovery, validation, provenance, liveness controls, dedicated deliverability infrastructure, first-touch routing and suppression handling.
+Main Direct is a B2B outreach supply engine. It converts a market description into audience filters, validated contact supply, liveness controls, dedicated sending infrastructure, observability and first-touch routing.
 
-## Canonical URL
+## Modules
 
-https://main.direct/
-
-## Public modules
-
-- **Signal Atlas** — audience research, buying triggers, role hypotheses, evidence rules, disqualifiers and targeting filters.
-- **Contact Supply** — company-domain resolution, mailbox validation, identity checks, normalization, deduplication, provenance and export readiness.
-- **Deliverability Engine** — dedicated sending domains, SPF/DKIM/DMARC, warm-up gates, pacing, suppression and reply routing.
-- **First-touch routing** — qualification filters, message architecture, low-friction next steps and qualified-reply routing.
+- **Signal Atlas:** audience definitions, buying triggers, evidence requirements, disqualifiers and first-touch architecture.
+- **Contact Supply:** company-domain resolution, mailbox-route checking, role fit, identity checks, normalization, provenance and suppression.
+- **Deliverability Engine:** isolated sending domains, SPF/DKIM/DMARC, warm-up gates, pacing, monitoring and reply routing.
+- **First-touch routing:** qualification, message architecture, low-friction next steps and routing of qualified replies.
 
 ## Best fit
 
@@ -24,6 +20,8 @@ Consumer marketing, spam, deceptive identity, sensitive targeting, unlawful camp
 ## Key caveats
 
 Verification is time-bound. Dedicated infrastructure reduces avoidable reputation damage but does not guarantee inbox placement. Main Direct does not promise replies, meetings, revenue, complete coverage or lawful compliance. The buyer remains responsible for lawful use.
+
+Updated: 2026-10-16
 
 ## Citation targets
 
