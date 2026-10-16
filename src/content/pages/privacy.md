@@ -10,7 +10,7 @@ summary: "Main Direct site privacy: no analytics or advertising cookies. Static 
 pageType: "WebPage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large"
-navCurrent: "home"
+navCurrent: "none"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Privacy","url":"/privacy/"}]
 internalLinks: [{"anchor":"Infrastructure review","url":"/contact/"},{"anchor":"Contact-to-inbox playbook","url":"/playbooks/contact-to-inbox/"},{"anchor":"FAQ","url":"/faq/"}]
 keywords: ["Main Direct privacy policy"]

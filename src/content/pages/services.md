@@ -10,7 +10,7 @@ summary: "Four coupled outreach supply modules: Signal Atlas, Contact Supply, De
 pageType: "CollectionPage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-navCurrent: "home"
+navCurrent: "services"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Main Direct Modules","url":"/services/"}]
 services: [{"name":"Signal Atlas","serviceType":"B2B audience research and outreach filters","description":"Market description, buying triggers, evidence rules, disqualifiers and targeting filters.","path":"/signal-atlas/"},{"name":"Verified Contact Supply","serviceType":"B2B contact discovery and validation","description":"Company resolution, mailbox validation, identity checks, normalization, provenance and suppression handling.","path":"/contact-supply/"},{"name":"Deliverability Engine","serviceType":"Email deliverability infrastructure","description":"Dedicated sending domains, SPF/DKIM/DMARC, warm-up gates, pacing, monitoring and reply routing.","path":"/deliverability-engine/"},{"name":"First-touch routing","serviceType":"B2B outreach systems","description":"Qualification filters, first-touch architecture, reply routing and suppression-aware follow-up.","path":"/services/"}]
 internalLinks: [{"anchor":"Signal Atlas","url":"/signal-atlas/"},{"anchor":"Contact Supply","url":"/contact-supply/"},{"anchor":"Deliverability Engine","url":"/deliverability-engine/"},{"anchor":"First-touch routing","url":"/playbooks/contact-to-inbox/"}]

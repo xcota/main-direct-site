@@ -10,7 +10,7 @@ summary: "Main Direct is an independent B2B outreach supply engine led by Costa 
 pageType: "AboutPage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-navCurrent: "home"
+navCurrent: "about"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"About Main Direct","url":"/about/"}]
 internalLinks: [{"anchor":"Modules","url":"/services/"},{"anchor":"Verified Contact Supply","url":"/contact-supply/"},{"anchor":"Deliverability Engine","url":"/deliverability-engine/"}]
 keywords: ["about Main Direct"]

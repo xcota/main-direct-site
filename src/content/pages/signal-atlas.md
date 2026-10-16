@@ -10,7 +10,7 @@ summary: "Signal Atlas turns a market description into audience filters, buying 
 pageType: "ServicePage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-navCurrent: "home"
+navCurrent: "signal"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Signal Atlas","url":"/signal-atlas/"}]
 services: [{"name":"Signal Atlas","serviceType":"B2B audience research and outreach filters","description":"Market description becomes audience definitions, buying triggers, evidence rules, exclusion rules and targeting filters.","path":"/signal-atlas/"}]
 internalLinks: [{"anchor":"See the self-supply playbook","url":"/playbooks/self-supply/"},{"anchor":"Modules","url":"/services/"},{"anchor":"Contact Supply","url":"/contact-supply/"}]

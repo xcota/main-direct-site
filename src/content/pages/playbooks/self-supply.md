@@ -10,7 +10,7 @@ summary: "Public methodology showing how Main Direct applies contact filters, va
 pageType: "ArticlePage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-navCurrent: "home"
+navCurrent: "playbook"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Playbooks","url":"/playbooks/"},{"anchor":"Main Direct Self-Supply Playbook","url":"/playbooks/self-supply/"}]
 datePublished: "2026-10-10"
 article: {"headline":"Main Direct self-supply playbook","description":"Public methodology for applying Main Direct's contact supply, validation and deliverability layer to itself."}

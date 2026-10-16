@@ -16,7 +16,7 @@ export const NAV_ITEMS = [
   { href: '/contact/', label: 'Contact', key: 'contact' }
 ] as const;
 
-export type NavKey = 'home' | 'services' | 'signal' | 'supply' | 'engine' | 'playbook' | 'about' | 'contact';
+export type NavKey = 'home' | 'services' | 'signal' | 'supply' | 'engine' | 'playbook' | 'about' | 'contact' | 'none';
 
 export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path === '/' ? '/' : path}`;

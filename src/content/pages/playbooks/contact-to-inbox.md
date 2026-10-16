@@ -10,7 +10,7 @@ summary: "A practical B2B cold email architecture: source mapping, contact valid
 pageType: "ArticlePage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-navCurrent: "home"
+navCurrent: "playbook"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Playbooks","url":"/playbooks/"},{"anchor":"Contact-to-Inbox System: Safe B2B Cold Email Architecture","url":"/playbooks/contact-to-inbox/"}]
 datePublished: "2026-10-10"
 article: {"headline":"The contact-to-inbox system: safer B2B cold email architecture","description":"A five-layer B2B cold email architecture covering target definition, source mapping, contact validation, sending-domain isolation, warm-up and monitoring.","alternativeHeadline":"How to connect contact validation and email deliverability infrastructure","wordCount":1900,"articleSection":["B2B data","Email deliverability","Cold email infrastructure"]}

@@ -10,7 +10,7 @@ summary: "Controlled B2B contact supply with company resolution, mailbox validat
 pageType: "ServicePage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-navCurrent: "home"
+navCurrent: "supply"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Verified Contact Supply","url":"/contact-supply/"}]
 services: [{"name":"Verified Contact Supply","serviceType":"B2B contact discovery and validation","description":"Controlled contact retrieval, company-domain resolution, validation, provenance, normalization, deduplication and suppression handling.","path":"/contact-supply/"}]
 internalLinks: [{"anchor":"Start with Signal Atlas","url":"/signal-atlas/"},{"anchor":"Deliverability Engine","url":"/deliverability-engine/"},{"anchor":"FAQ","url":"/faq/"}]

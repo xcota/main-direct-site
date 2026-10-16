@@ -49,7 +49,7 @@ const pageSchema = z.object({
   datePublished: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
   robots: z.string().default('index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'),
   includeCta: z.boolean().default(true),
-  navCurrent: z.enum(['home', 'services', 'signal', 'supply', 'engine', 'playbook', 'about', 'contact']).default('home'),
+  navCurrent: z.enum(['home', 'services', 'signal', 'supply', 'engine', 'playbook', 'about', 'contact', 'none']).default('home'),
   breadcrumbs: z.array(linkSchema).min(1),
   internalLinks: z.array(linkSchema).default([]),
   keywords: z.array(z.string()).default([]),

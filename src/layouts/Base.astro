@@ -224,7 +224,8 @@ const navItems: readonly { href: string; label: string; key: NavKey }[] = NAV_IT
     <header class="site">
       <div class="wrap nav">
         <a class="logo" href="/" aria-label="Main Direct home">main<strong>.</strong>direct</a>
-        <nav aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span class="bars" aria-hidden="true"></span><span class="sr-only">Menu</span></button>
+        <nav aria-label="Primary" id="primary-nav">
           <ul class="menu">
             {navItems.map((item) => (
               <li><a href={item.href} aria-current={page.navCurrent === item.key ? 'page' : undefined}>{item.label}</a></li>
@@ -234,6 +235,19 @@ const navItems: readonly { href: string; label: string; key: NavKey }[] = NAV_IT
         <a class="button" href="/contact/">Start a review</a>
       </div>
     </header>
+    <script is:inline>
+      (function () {
+        var header = document.querySelector('header.site');
+        var nav = header && header.querySelector('.nav');
+        var toggle = header && header.querySelector('.nav-toggle');
+        if (!nav || !toggle) return;
+        header.classList.add('js-nav');
+        toggle.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      })();
+    </script>
 
     <main id="main">
       <slot />

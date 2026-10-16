@@ -10,9 +10,9 @@ a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline} :
 .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}.reading{max-width:var(--container)}
 header.site{position:sticky;top:0;z-index:50;background:rgba(6,9,13,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:66px}
-.logo{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:800;letter-spacing:-.045em;font-size:20px}.logo:hover{text-decoration:none}.logo strong{color:var(--accent)}
+.logo{display:flex;align-items:center;gap:0;color:var(--ink);font-weight:800;letter-spacing:-.045em;font-size:20px}.logo:hover{text-decoration:none}.logo strong{color:var(--accent)}
 .menu{display:flex;align-items:center;gap:22px;margin:0;padding:0;list-style:none}.menu a{color:var(--muted);font-size:14px;font-weight:600}.menu a:hover,.menu a[aria-current=page]{color:var(--ink);text-decoration:none}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:12px 22px;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;border:0;transition:transform .2s,background .2s,box-shadow .2s}.button:hover{background:#77b0ff;color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:0 10px 30px rgba(91,157,255,.24)}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:12px 22px;border-radius:10px;background:var(--accent);color:#fff;font:inherit;font-weight:700;border:0;transition:transform .2s,background .2s,box-shadow .2s}.button:hover{background:#77b0ff;color:#fff;text-decoration:none;transform:translateY(-1px);box-shadow:0 10px 30px rgba(91,157,255,.24)}
 .button.ghost{background:transparent;color:var(--ink);border:1px solid var(--strong)}.button.ghost:hover{border-color:var(--accent);color:#fff;background:rgba(91,157,255,.10)}
 main{overflow:clip}
 section{position:relative;padding:78px 0} section + section{border-top:1px solid var(--line)}
@@ -24,7 +24,7 @@ h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;max-width:850px} h1 .accen
 h2{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:800} h3{font-size:1.22rem;font-weight:750} p{margin:0}
 .lead,.section-intro{max-width:700px;color:var(--muted);font-size:1.12rem;margin:22px 0 0}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:36px 0 0}.hero-note{width:100%;color:var(--muted);font-size:14px}
-.section-head{max-width:750px}.section-head p{color:var(--muted);margin-top:16px;font-size:1.08rem}
+.section-head{max-width:750px}.section-head p:not(.eyebrow){color:var(--muted);margin-top:16px;font-size:1.08rem}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px}
 .card,.fact,.answer,.step,.pillar{background:linear-gradient(180deg,var(--panel),#0a1016);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
 .card h3,.answer h3{margin-bottom:12px}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{color:var(--accent);text-decoration:none}.card p,.answer p,.fact p{color:var(--muted);font-size:15px}.tag{display:block;color:var(--accent-2);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;margin-bottom:16px}
@@ -78,3 +78,41 @@ footer.site{border-top:1px solid var(--line);padding:54px 0 38px;background:#050
 .related-links a{display:block;min-height:100%;padding:16px;color:var(--ink);font-weight:700}
 .related-links a:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:760px){.related-links ul{grid-template-columns:1fr}.answer-block{padding:36px 0}}
+
+/* Eyebrow keeps one size everywhere and sits one step above its heading. */
+.eyebrow + h1,.eyebrow + h2{margin-top:16px}
+.card p.eyebrow{font-size:12px}
+
+/* One left edge: reading columns keep their 872px measure (920px minus gutters) but align with the 1120px grid instead of centering. */
+.wrap.reading{max-width:var(--max)}
+.wrap.reading>*{max-width:calc(var(--container) - 48px)}
+
+/* No orphans: 2 or 4 cards fill a 2-column grid instead of leaving holes in a 3-column one. */
+@media (min-width:621px){
+  .grid:has(> :nth-child(2):last-child),.grid:has(> :nth-child(4):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (min-width:761px){
+  .related-links ul:has(> :nth-child(2):last-child),.related-links ul:has(> :nth-child(4):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Phone and small-tablet header: logo, CTA and a menu toggle on one row; links open as a full-width list. */
+.nav-toggle{display:none}
+@media (max-width:760px){
+  header.site{position:sticky}
+  .nav{flex-wrap:wrap;gap:10px 12px}
+  .nav > .logo{order:0;margin-right:auto}
+  .nav > .button{display:inline-flex;order:1;width:auto;min-height:44px;padding:10px 14px;font-size:14px}
+  .nav-toggle{order:2;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--strong);border-radius:10px;background:transparent;color:var(--ink);cursor:pointer;font:inherit}
+  .nav-toggle .bars,.nav-toggle .bars::before,.nav-toggle .bars::after{display:block;width:18px;height:2px;border-radius:2px;background:currentColor;position:relative;content:""}
+  .nav-toggle .bars::before{position:absolute;top:-6px}.nav-toggle .bars::after{position:absolute;top:6px}
+  .nav-toggle[aria-expanded="true"] .bars{background:transparent}
+  .nav-toggle[aria-expanded="true"] .bars::before{top:0;transform:rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] .bars::after{top:0;transform:rotate(-45deg)}
+  .nav > nav{order:3;flex:1 1 100%}
+  .js-nav .nav > nav{display:none}
+  .js-nav .nav.open > nav{display:block}
+  .menu{flex-direction:column;align-items:stretch;gap:0;overflow:visible;padding:4px 0 8px}
+  .menu li:first-child{display:block}
+  .menu a{display:flex;min-height:48px;align-items:center;border-top:1px solid var(--line);font-size:16px}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+}

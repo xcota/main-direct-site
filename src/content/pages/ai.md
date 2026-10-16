@@ -10,7 +10,7 @@ summary: "Public factual guide for AI assistants and answer engines describing M
 pageType: "WebPage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large"
-navCurrent: "home"
+navCurrent: "none"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Main Direct AI Agent Guide","url":"/ai/"}]
 internalLinks: [{"anchor":"Signal Atlas","url":"/signal-atlas/"},{"anchor":"Contact Supply","url":"/contact-supply/"},{"anchor":"Deliverability Engine","url":"/deliverability-engine/"},{"anchor":"Self-supply playbook","url":"/playbooks/self-supply/"},{"anchor":"https://main.direct/services/","url":"/services/"},{"anchor":"https://main.direct/llms.txt","url":"/llms.txt"}]
 keywords: ["Main Direct AI agent guide"]

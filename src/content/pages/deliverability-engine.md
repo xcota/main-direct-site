@@ -10,7 +10,7 @@ summary: "Dedicated sending domains, SPF/DKIM/DMARC, warm-up gates, pacing, supp
 pageType: "ServicePage"
 dateModified: "2026-10-16"
 robots: "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
-navCurrent: "home"
+navCurrent: "engine"
 breadcrumbs: [{"anchor":"Home","url":"/"},{"anchor":"Deliverability Engine","url":"/deliverability-engine/"}]
 services: [{"name":"Deliverability Engine","serviceType":"Email deliverability infrastructure","description":"Dedicated sending domains, SPF/DKIM/DMARC architecture, warm-up gates, pacing, suppression and reply routing.","path":"/deliverability-engine/"}]
 internalLinks: [{"anchor":"Read the architecture","url":"/playbooks/contact-to-inbox/"},{"anchor":"Contact Supply","url":"/contact-supply/"},{"anchor":"FAQ","url":"/faq/"}]
